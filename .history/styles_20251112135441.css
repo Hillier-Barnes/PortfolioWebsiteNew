@@ -1,0 +1,394 @@
+/* Fortnite Lobby Style - Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background: #0a0e27;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Animated grid overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Header Styles - Fortnite Lobby Style */
+header {
+  background: linear-gradient(135deg, rgba(0, 20, 40, 0.95) 0%, rgba(0, 10, 30, 0.95) 100%);
+  border-bottom: 3px solid #00ffff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3), inset 0 0 30px rgba(0, 255, 255, 0.1);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+header h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #00ffff 0%, #8a2be2 50%, #00ffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient 3s linear infinite;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+header p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #00ffff;
+  font-weight: 600;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+/* Navigation Styles - Fortnite Button Style */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border: 2px solid #00ffff;
+  background: rgba(0, 255, 255, 0.1);
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+nav a:hover::before {
+  left: 100%;
+}
+
+nav a:hover {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), inset 0 0 20px rgba(0, 255, 255, 0.2);
+  transform: translateY(-3px);
+  border-color: #8a2be2;
+}
+
+/* Container Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Styles - Fortnite Card Style */
+section {
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(0, 20, 40, 0.8) 0%, rgba(0, 10, 30, 0.8) 100%);
+  padding: 3rem;
+  border: 2px solid #00ffff;
+  clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.3),
+    inset 0 0 30px rgba(0, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+section:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 0 50px rgba(0, 255, 255, 0.5),
+    0 0 50px rgba(138, 43, 226, 0.3),
+    inset 0 0 30px rgba(0, 255, 255, 0.1);
+  border-color: #8a2be2;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #00ffff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+  position: relative;
+  z-index: 1;
+  border-bottom: 3px solid #00ffff;
+  padding-bottom: 0.5rem;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+  background: rgba(0, 255, 255, 0.1);
+  padding: 1rem;
+  margin: -1rem -1rem 1.5rem -1rem;
+}
+
+section p {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Projects List Styles - Fortnite Item Style */
+.projects-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.projects-list li {
+  background: linear-gradient(135deg, rgba(0, 20, 40, 0.9) 0%, rgba(0, 10, 30, 0.9) 100%);
+  padding: 2rem;
+  border: 2px solid #00ffff;
+  clip-path: polygon(3% 0%, 100% 0%, 97% 100%, 0% 100%);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.projects-list li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.projects-list li:hover::before {
+  opacity: 1;
+}
+
+.projects-list li:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 
+    0 0 40px rgba(0, 255, 255, 0.6),
+    0 0 40px rgba(138, 43, 226, 0.4);
+  border-color: #8a2be2;
+}
+
+.project-title {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00ffff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+.project-desc {
+  font-size: 1rem;
+  color: #d0d0d0;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer Styles - Fortnite Style */
+footer {
+  background: linear-gradient(135deg, rgba(0, 10, 30, 0.95) 0%, rgba(0, 20, 40, 0.95) 100%);
+  color: #00ffff;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  margin-top: 4rem;
+  border-top: 3px solid #00ffff;
+  box-shadow: 0 -5px 30px rgba(0, 255, 255, 0.3);
+  clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+  position: relative;
+  z-index: 1;
+}
+
+footer p {
+  font-size: 1.1rem;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  section {
+    padding: 2rem 1.5rem;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
+
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-list li {
+    padding: 1.5rem;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 2rem 1rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  nav a {
+    width: 90%;
+    text-align: center;
+  }
+
+  section {
+    padding: 1.5rem 1rem;
+  }
+
+  section h2 {
+    font-size: 1.75rem;
+  }
+}
