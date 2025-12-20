@@ -75,7 +75,7 @@ export default function App() {
           }}>
             <img src="/images/pfp.jpeg" alt="Profile" className="profile-image-navbar" />
           </button>
-          <a href="https://github.com/hillier-bnpm install tailwindcss @tailwindcss/vitearnes" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/hillier-barnes" target="_blank" rel="noopener noreferrer">
             <img src="/images/github.png" alt="GitHub" />
           </a>
           <a href="https://www.linkedin.com/in/sosaiah-hillier-barnes-051041211/" target="_blank" rel="noopener noreferrer">
@@ -96,9 +96,31 @@ export default function App() {
 
         <section id="about" ref={setSectionRef('about')} className="content-section">
           <h2>About</h2>
-          <p>
-            I&apos;m a quick learner and I&apos;ll deadass do anything.
-          </p>
+          <div className="about-container">
+            <div className="about-grid"> 
+              <div className="about-grid-item" style={{ gridColumn: '1', gridRow: '1' }}>
+                <p>placeholder text (spans columns 1 and 2 in row 1)</p>
+              </div>
+              <div className="about-grid-item" style={{ gridColumn: '1', gridRow: '2 / span 2' }}>
+                <p>placeholder text (spans rows 2 and 3 in column 1)</p>
+              </div>
+              <div className="about-grid-item" style={{ gridColumn: '2 / span 2', gridRow: '1 / span 2' }}>
+                <p>placeholder text</p>
+              </div>
+              <div className="about-grid-item" style={{ gridColumn: '2', gridRow: '3' }}>
+                <p>placeholder text</p>
+              </div>
+              <div className="about-grid-item" style={{ gridColumn: '3 / span 2', gridRow: '3' }}>
+                <p>placeholder text</p>
+              </div>
+              <div className="about-grid-item" style={{ gridColumn: '4', gridRow: '1' }}>
+                <p>placeholder text</p>
+              </div>
+              <div className="about-grid-item" style={{ gridColumn: '4', gridRow: '2' }}>
+                <p>placeholder text</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section id="projects" ref={setSectionRef('projects')} className="content-section projects-section">
