@@ -75,7 +75,7 @@ export default function App() {
           }}>
             <img src="/images/pfp.jpeg" alt="Profile" className="profile-image-navbar" />
           </button>
-          <a href="https://github.com/hillier-barnes" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/hillier-bnpm install tailwindcss @tailwindcss/vitearnes" target="_blank" rel="noopener noreferrer">
             <img src="/images/github.png" alt="GitHub" />
           </a>
           <a href="https://www.linkedin.com/in/sosaiah-hillier-barnes-051041211/" target="_blank" rel="noopener noreferrer">
