@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './index.css';
+import ShaderBackground from './ShaderBackground';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -41,6 +42,7 @@ export default function App() {
 
   return (
     <div className="page">
+      <ShaderBackground />
       <section className="navbar-section">
         <div className="navbar">
           <button onClick={() => {
@@ -73,7 +75,7 @@ export default function App() {
           <button onClick={() => {
             sectionsRef.current?.home?.scrollIntoView({ behavior: 'smooth' });
           }}>
-            <img src="/images/pfp.jpeg" alt="Profile" className="profile-image-navbar" />
+            <img src="/images/img.jpg" alt="Profile" className="profile-image-navbar" />
           </button>
           <a href="https://github.com/hillier-barnes" target="_blank" rel="noopener noreferrer">
             <img src="/images/github.png" alt="GitHub" />
@@ -88,7 +90,7 @@ export default function App() {
       <section className="scroll-section">
         <section id="home" ref={setSectionRef('home')} className="content-section">
           <header className="header">
-            <img src="/images/pfp.jpeg" alt="Profile" className="profile-image" />
+            <img src="/images/img.jpg" alt="Profile" className="profile-image" />
             <h1>Sosaiah Hillier-Barnes</h1>
             <p>Computer Science Graduate &amp; Aspiring Employed Person</p>
           </header>
@@ -99,10 +101,10 @@ export default function App() {
           <div className="about-container">
             <div className="about-grid"> 
               <div className="about-grid-item" style={{ gridColumn: '1', gridRow: '1' }}>
-                <p>placeholder text (spans columns 1 and 2 in row 1)</p>
+                <p>placeholder text</p>
               </div>
               <div className="about-grid-item" style={{ gridColumn: '1', gridRow: '2 / span 2' }}>
-                <p>placeholder text (spans rows 2 and 3 in column 1)</p>
+                <p>placeholder text</p>
               </div>
               <div className="about-grid-item" style={{ gridColumn: '2 / span 2', gridRow: '1 / span 2' }}>
                 <p>placeholder text</p>
@@ -129,22 +131,22 @@ export default function App() {
             <article className="project-card">
               <img src="/images/cloud-credentials.png" alt="Cloud Credentials project" />
               <div className="project-info">
-                <h3>Project One</h3>
-                <p>Short description of a cool thing you built.</p>
+                <h3>Cloud Credentials</h3>
+                <p>Blah blah blah</p>
               </div>
             </article>
             <article className="project-card">
             <img src="/images/cloud-credentials.png" alt="Cloud Credentials project" />
             <div className="project-info">
                 <h3>Project Two</h3>
-                <p>Another project highlight goes here.</p>
+                <p>Blah blah blah</p>
               </div>
             </article>
             <article className="project-card">
             <img src="/images/cloud-credentials.png" alt="Cloud Credentials project" />
             <div className="project-info">
                 <h3>Project Three</h3>
-                <p>Replace these with real screenshots and copy.</p>
+                <p>Blah blah blah</p>
               </div>
             </article>
           </div>
@@ -164,7 +166,7 @@ export default function App() {
               />
               <div className="project-info">
                 <h3>Clip One</h3>
-                <p>A quick highlight reel of one of my recent projects.</p>
+                <p>Fortnite monster</p>
               </div>
             </article>
             <article className="project-card">
@@ -178,7 +180,7 @@ export default function App() {
               />
               <div className="project-info">
                 <h3>Clip Two</h3>
-                <p>Another short demo showcasing interaction and UX.</p>
+                <p>Fortnite monster</p>
               </div>
             </article>
             <article className="project-card">
@@ -192,7 +194,7 @@ export default function App() {
               />
               <div className="project-info">
                 <h3>Clip Three</h3>
-                <p>Replace these sources with your own gameplay or app clips.</p>
+                <p>Fortnite monster</p>
               </div>
             </article>
           </div>
