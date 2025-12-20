@@ -1,16 +1,73 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './index.css';
 
 export default function App() {
+  const [activeSection, setActiveSection] = useState('home');
+  const sectionsRef = useRef({});
+
+  useEffect(() => {
+    // Observer options to detect when a section is in view
+    const observerOptions = {
+      root: document.querySelector('.scroll-section'),
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0,
+    };
+
+    // Observer callback function to set the active section
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          setActiveSection(sectionId);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe all content sections
+    Object.values(sectionsRef.current).forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const setSectionRef = (id) => (el) => {
+    if (el) sectionsRef.current[id] = el;
+  };
+
   return (
     <div className="page">
       <section className="navbar-section">
         <div className="navbar">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#clips">Clips</a>
-          <a href="#resume">Resume</a>
+          <button onClick={() => {
+            sectionsRef.current?.home?.scrollIntoView({ behavior: 'smooth' });
+          }} className={activeSection === 'home' ? 'active' : ''}
+          >Home</button>
+          
+          <button onClick={() => {
+            sectionsRef.current?.about?.scrollIntoView({ behavior: 'smooth' });
+          }} className={activeSection === 'about' ? 'active' : ''}
+          >About</button>
+          
+          <button onClick={() => {
+            sectionsRef.current?.projects?.scrollIntoView({ behavior: 'smooth' });
+          }} className={activeSection === 'projects' ? 'active' : ''}
+          >Projects</button>
+          
+          <button onClick={() => {
+            sectionsRef.current?.clips?.scrollIntoView({ behavior: 'smooth' });
+          }} className={activeSection === 'clips' ? 'active' : ''}
+          >Clips</button>
+
+          <button onClick={() => {
+            sectionsRef.current?.resume?.scrollIntoView({ behavior: 'smooth' });
+          }} className={activeSection === 'resume' ? 'active' : ''}
+          >Resume</button>
+          
         </div>
         <div className="navbar-footer">
           <a href="#home"> 
@@ -26,7 +83,7 @@ export default function App() {
 
 
       <section className="scroll-section">
-        <section id="home" className="content-section">
+        <section id="home" ref={setSectionRef('home')} className="content-section">
           <header className="header">
             <img src="/images/pfp.jpeg" alt="Profile" className="profile-image" />
             <h1>Sosaiah Hillier-Barnes</h1>
@@ -34,15 +91,14 @@ export default function App() {
           </header>
         </section>
 
-
-        <section id="about" className="content-section">
+        <section id="about" ref={setSectionRef('about')} className="content-section">
           <h2>About</h2>
           <p>
             I&apos;m a quick learner and I&apos;ll deadass do anything.
           </p>
         </section>
 
-        <section id="projects" className="content-section projects-section">
+        <section id="projects" ref={setSectionRef('projects')} className="content-section projects-section">
           <h2>Projects</h2>
           <div className="projects-scroller">
             <article className="project-card">
@@ -69,7 +125,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="clips" className="content-section projects-section">
+        <section id="clips" ref={setSectionRef('clips')} className="content-section projects-section">
           <h2>Clips</h2>
           <div className="projects-scroller">
             <article className="project-card">

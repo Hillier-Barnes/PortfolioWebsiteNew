@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
+/* Color Variables - Change these to easily update the color scheme */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f0f1bf;
+  --text-primary: #111827;
+  --text-secondary: #5b5b5b;
+  --text-active: #000000;
+}
+
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,8 +21,8 @@
 html,
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #f5f5f7;
-  color: #111827;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   height: 100%;
   overflow: hidden;
 }
@@ -32,8 +43,8 @@ body {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  background: #e9eaebbf;
-  box-shadow: inset 0px 0px 90px 40px #ffffff;
+  background: var(--bg-secondary);
+  box-shadow: inset 0px 0px 90px 40px var(--bg-primary);
 }
 
 .navbar-footer {
@@ -55,7 +66,6 @@ body {
 }
 
 .navbar-footer img:hover {
-  filter: grayscale(0%) drop-shadow(0px 2px 8px #0002) brightness(1.1);
   transform: scale(1.07) translateY(-2px);
   cursor: pointer;
 }
@@ -73,7 +83,7 @@ body {
   padding: 3rem 4rem;
   overflow-y: auto;
   overflow-x: hidden;
-  background: #ffffff;
+  background: var(--bg-primary);
   scroll-snap-type: y proximity;
 }
 
@@ -90,7 +100,7 @@ body {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .header p {
@@ -133,8 +143,8 @@ body {
   overflow-y: hidden;
   padding-bottom: 1rem;
   scroll-snap-type: x mandatory;
-  background-color: #f5f5f7;
-  box-shadow: inset 0px 0px 90px 90px #ffffff;
+  background-color: var(--bg-secondary);
+  box-shadow: inset 0px 0px 90px 90px var(--bg-primary);
 }
 
 .project-card {
@@ -179,7 +189,7 @@ body {
 
 .navbar a {
   text-decoration: none;
-  color: #111827;
+  color: var(--text-primary);
   padding: 0.5rem 1.25rem;
   font-size: 1.5rem;
   border-radius: 999px;
@@ -187,8 +197,39 @@ body {
 }
 
 .navbar a:hover {
-  transform: scale(0.96);
-  color: #5b5b5b;
+  transform: scale(1.05) translateX(+4px);
+  color: var(--text-secondary);
+}
+
+.navbar a.active {
+  color: var(--text-active);
+  font-weight: 600;
+  transform: scale(1.05) translateX(+4px);
+}
+
+.navbar button {
+  text-decoration: none;
+  color: var(--text-primary);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.5rem;
+  border-radius: 999px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+  text-align: left;
+}
+
+.navbar button:hover {
+  transform: scale(1.05) translateX(+4px);
+  color: var(--text-secondary);
+}
+
+.navbar button.active {
+  color: var(--text-active);
+  font-weight: 600;
+  transform: scale(1.05) translateX(+4px);
 }
 
 @media (max-width: 768px) {
