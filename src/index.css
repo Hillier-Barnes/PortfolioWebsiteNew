@@ -44,7 +44,7 @@ body {
   align-items: stretch;
   justify-content: center;
   background: var(--bg-secondary);
-  box-shadow: inset 0px 0px 90px 40px var(--bg-primary);
+  box-shadow: inset 0px 0px 90px 20px var(--bg-primary);
 }
 
 .navbar-footer {
@@ -55,17 +55,27 @@ body {
   justify-content: center;
 }
 
+.navbar-footer a,
+.navbar-footer button {
+  display: inline-block;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
 .navbar-footer img {
   width: auto;
   height: 2.5rem;
-  margin: 0 0.5rem;
   object-fit: contain;
   filter: grayscale(30%);
   transition: filter 0.2s, transform 0.2s;
   vertical-align: middle;
 }
 
-.navbar-footer img:hover {
+.navbar-footer a:hover img,
+.navbar-footer button:hover img {
   transform: scale(1.07) translateY(-2px);
   cursor: pointer;
 }

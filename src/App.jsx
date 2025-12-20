@@ -70,8 +70,11 @@ export default function App() {
           
         </div>
         <div className="navbar-footer">
-          <a href="#home"> 
-            <img src="/images/pfp.jpeg" alt="Profile" className="profile-image-navbar" /></a>
+          <button onClick={() => {
+            sectionsRef.current?.home?.scrollIntoView({ behavior: 'smooth' });
+          }}>
+            <img src="/images/pfp.jpeg" alt="Profile" className="profile-image-navbar" />
+          </button>
           <a href="https://github.com/hillier-barnes" target="_blank" rel="noopener noreferrer">
             <img src="/images/github.png" alt="GitHub" />
           </a>
