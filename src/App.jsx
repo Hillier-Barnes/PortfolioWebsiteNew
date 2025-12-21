@@ -4,6 +4,7 @@ import ShaderBackground from './ShaderBackground';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const sectionsRef = useRef({});
 
   useEffect(() => {
@@ -64,46 +65,57 @@ export default function App() {
     if (el) sectionsRef.current[id] = el;
   };
 
+  const handleNavClick = (sectionId) => {
+    sectionsRef.current?.[sectionId]?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="page">
       <ShaderBackground />
-      <section className="navbar-section">
+      <button 
+        className={`mobile-menu-toggle ${isMobileMenuOpen ? 'menu-open' : ''}`}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div 
+        className={`mobile-menu-overlay ${isMobileMenuOpen ? 'show' : ''}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      ></div>
+      <section className={`navbar-section ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
         <div className="navbar">
 
-          <button onClick={() => {
-            sectionsRef.current?.home?.scrollIntoView({ behavior: 'smooth' });
-          }} className={activeSection === 'home' ? 'active' : ''}
-          >Home</button>
+          <button onClick={() => handleNavClick('home')} className={activeSection === 'home' ? 'active' : ''}>
+            Home
+          </button>
           
-          <button onClick={() => {
-            sectionsRef.current?.about?.scrollIntoView({ behavior: 'smooth' });
-          }} className={activeSection === 'about' ? 'active' : ''}
-          >About</button>
+          <button onClick={() => handleNavClick('about')} className={activeSection === 'about' ? 'active' : ''}>
+            About
+          </button>
           
-          <button onClick={() => {
-            sectionsRef.current?.projects?.scrollIntoView({ behavior: 'smooth' });
-          }} className={activeSection === 'projects' ? 'active' : ''}
-          >Projects</button>
+          <button onClick={() => handleNavClick('projects')} className={activeSection === 'projects' ? 'active' : ''}>
+            Projects
+          </button>
 
-          <button onClick={() => {
-            sectionsRef.current?.experience?.scrollIntoView({ behavior: 'smooth' });
-          }} className={activeSection === 'experience' ? 'active' : ''}
-          >Experience</button>
+          <button onClick={() => handleNavClick('experience')} className={activeSection === 'experience' ? 'active' : ''}>
+            Experience
+          </button>
 
-          <button onClick={() => {
-            sectionsRef.current?.personal?.scrollIntoView({ behavior: 'smooth' });
-          }} className={activeSection === 'personal' ? 'active' : ''}
-          >Personal</button>
+          <button onClick={() => handleNavClick('personal')} className={activeSection === 'personal' ? 'active' : ''}>
+            Personal
+          </button>
           
-          <button onClick={() => {
-            sectionsRef.current?.clips?.scrollIntoView({ behavior: 'smooth' });
-          }} className={activeSection === 'clips' ? 'active' : ''}
-          >Clips</button>
+          <button onClick={() => handleNavClick('clips')} className={activeSection === 'clips' ? 'active' : ''}>
+            Clips
+          </button>
 
-          <button onClick={() => {
-            sectionsRef.current?.contact?.scrollIntoView({ behavior: 'smooth' });
-          }} className={activeSection === 'contact' ? 'active' : ''}
-          >Contact</button>
+          <button onClick={() => handleNavClick('contact')} className={activeSection === 'contact' ? 'active' : ''}>
+            Contact
+          </button>
           
         </div>
         <div className="navbar-footer">
@@ -132,8 +144,8 @@ export default function App() {
         <section id="about" ref={setSectionRef('about')} className="content-section">
           <h2>About</h2>
           <div className="about-container">
-            <div className="about-grid"> 
-              <div className="about-grid-item" style={{ gridColumn: '3 / span 2', gridRow: '1 / span 3' }}>
+            <div className="grid"> 
+              <div className="grid-item" style={{ gridColumn: '3 / span 2', gridRow: '1 / span 3' }}>
                 <h3>Education</h3>
                 <p style={{ marginBottom: '0.25rem' }}><strong>Queensland University of Technology (2022 - 2026)</strong></p>
                 <p style={{ marginBottom: '0.25rem' }}>Bachelor of Information Technology (Distinction)</p>
@@ -144,9 +156,15 @@ export default function App() {
                 <h3>Languages and Tools</h3>
                 <p>I have experience with most popular languages, but my core proficiency lies in HTML, CSS, JavaScript, and C#. I am also proficient with industry-standard development and collaboration tools, such as GitHub for version control and Jira for project management. More importantly, I am a quick learner and a highly motivated person; I would be more than happy to learn any new technology or skill needed to help the team succeed.</p>
               </div>
-              <div className="about-grid-item" style={{ gridColumn: '1 / span 2', gridRow: '1 / span 3' }}>
-                <h3>A Professional POV</h3>
-                <p>Hi, I'm Sosaiah Hillier-Barnes. I am a recent Computer Science graduate from QUT with a deep interest in modern web development and software engineering. Though I have a lot of experience in building responsive, scalable applications using the React.js ecosystem and implementing reliable backend services with Node.js, I believe my true strength lies in my ability to learn and acquire new skills. I am actively seeking an entry-level Software Engineer role where I can bring my technical foundation, problem-solving skills, and enthusiasm for learning to a forward-thinking team. Outside of coding, I am committed to continuous improvement, I am disciplined, and I believe that any problem between two people can be solved with kindness and understanding.</p>
+              <div className="grid-item" style={{ gridColumn: '1 / span 2', gridRow: '1 / span 2' }}>
+                <h3>About Me</h3>
+                <p>I am a recent Computer Science graduate from QUT with a deep interest in UI/UX design, web development, and software engineering. I am most experienced in building responsive, scalable applications using the React.js ecosystem and Node.js for backend services. While my technical foundation is strong, my true strength is my ability to quickly learn and acquire new skills. I hope to obtain an entry-level Software Engineer (or adjacent) role where I can contribute my problem-solving skills, discipline, and enthusiasm to a forward-thinking team.</p>
+              </div>
+              <div className="grid-item grid-img-item" style={{ gridColumn: '1 / span 1', gridRow: '3 / span 1' }}>
+                <img src="/images/rain.JPG" alt="rain" className="rain-image" />
+              </div>
+              <div className="grid-item grid-img-item" style={{ gridColumn: '2 / span 1', gridRow: '3 / span 1' }}>
+                <img src="/images/tree.jpg" alt="tree" className="tree-image" />
               </div>
             </div>
           </div>
@@ -181,6 +199,16 @@ export default function App() {
 
         <section id="experience" ref={setSectionRef('experience')} className="content-section">
           <h2>Experience</h2>
+          <div className="experience-container">
+            <div className="grid">
+              <div className="grid-item" style={{ gridColumn: '1 / span 2', gridRow: '1 / span 3' }}>
+              </div>
+              <div className="grid-item" style={{ gridColumn: '3 / span 1', gridRow: '1 / span 3' }}>
+              </div>
+              <div className="grid-item" style={{ gridColumn: '4 / span 1', gridRow: '1 / span 3' }}>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section id="personal" ref={setSectionRef('personal')} className="content-section">
