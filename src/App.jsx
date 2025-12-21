@@ -26,13 +26,37 @@ export default function App() {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
+    // Observer options for scroll animations
+    const animationObserverOptions = {
+      root: document.querySelector('.scroll-section'),
+      rootMargin: '-20% 0px -20% 0px',
+      threshold: 0.2,
+    };
+
+    // Observer callback for scroll animations
+    const animationCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    };
+
+    const animationObserver = new IntersectionObserver(animationCallback, animationObserverOptions);
+
     // Observe all content sections
     Object.values(sectionsRef.current).forEach((section) => {
-      if (section) observer.observe(section);
+      if (section) {
+        observer.observe(section);
+        animationObserver.observe(section);
+      }
     });
 
     return () => {
       observer.disconnect();
+      animationObserver.disconnect();
     };
   }, []);
 
@@ -45,6 +69,7 @@ export default function App() {
       <ShaderBackground />
       <section className="navbar-section">
         <div className="navbar">
+
           <button onClick={() => {
             sectionsRef.current?.home?.scrollIntoView({ behavior: 'smooth' });
           }} className={activeSection === 'home' ? 'active' : ''}
@@ -59,6 +84,16 @@ export default function App() {
             sectionsRef.current?.projects?.scrollIntoView({ behavior: 'smooth' });
           }} className={activeSection === 'projects' ? 'active' : ''}
           >Projects</button>
+
+          <button onClick={() => {
+            sectionsRef.current?.skills?.scrollIntoView({ behavior: 'smooth' });
+          }} className={activeSection === 'experience' ? 'active' : ''}
+          >Experience</button>
+
+          <button onClick={() => {
+            sectionsRef.current?.skills?.scrollIntoView({ behavior: 'smooth' });
+          }} className={activeSection === 'personal' ? 'active' : ''}
+          >Personal</button>
           
           <button onClick={() => {
             sectionsRef.current?.clips?.scrollIntoView({ behavior: 'smooth' });
@@ -66,9 +101,9 @@ export default function App() {
           >Clips</button>
 
           <button onClick={() => {
-            sectionsRef.current?.resume?.scrollIntoView({ behavior: 'smooth' });
-          }} className={activeSection === 'resume' ? 'active' : ''}
-          >Resume</button>
+            sectionsRef.current?.contact?.scrollIntoView({ behavior: 'smooth' });
+          }} className={activeSection === 'contact' ? 'active' : ''}
+          >Contact</button>
           
         </div>
         <div className="navbar-footer">
@@ -100,26 +135,20 @@ export default function App() {
           <h2>About</h2>
           <div className="about-container">
             <div className="about-grid"> 
-              <div className="about-grid-item" style={{ gridColumn: '1', gridRow: '1' }}>
-                <p>placeholder text</p>
+              <div className="about-grid-item" style={{ gridColumn: '3 / span 2', gridRow: '1 / span 3' }}>
+                <h3>Education</h3>
+                <p style={{ marginBottom: '0.25rem' }}><strong>Queensland University of Technology (2022 - 2026)</strong></p>
+                <p style={{ marginBottom: '0.25rem' }}>Bachelor of Information Technology (Distinction)</p>
+                <p style={{ marginBottom: '0.25rem' }}>Major in Computer Science</p>
+                <p style={{ marginBottom: 0 }}>Minor in Networks and Security</p>
+                <br />
+                <br />
+                <h3>Languages and Tools</h3>
+                <p>I have experience with most popular languages, but my core proficiency lies in HTML, CSS, JavaScript, and C#. I am also proficient with industry-standard development and collaboration tools, such as GitHub for version control and Jira for project management. More importantly, I am a quick learner and a highly motivated person; I would be more than happy to learn any new technology or skill needed to help the team succeed.</p>
               </div>
-              <div className="about-grid-item" style={{ gridColumn: '1', gridRow: '2 / span 2' }}>
-                <p>placeholder text</p>
-              </div>
-              <div className="about-grid-item" style={{ gridColumn: '2 / span 2', gridRow: '1 / span 2' }}>
-                <p>placeholder text</p>
-              </div>
-              <div className="about-grid-item" style={{ gridColumn: '2', gridRow: '3' }}>
-                <p>placeholder text</p>
-              </div>
-              <div className="about-grid-item" style={{ gridColumn: '3 / span 2', gridRow: '3' }}>
-                <p>placeholder text</p>
-              </div>
-              <div className="about-grid-item" style={{ gridColumn: '4', gridRow: '1' }}>
-                <p>placeholder text</p>
-              </div>
-              <div className="about-grid-item" style={{ gridColumn: '4', gridRow: '2' }}>
-                <p>placeholder text</p>
+              <div className="about-grid-item" style={{ gridColumn: '1 / span 2', gridRow: '1 / span 3' }}>
+                <h3>A Professional POV</h3>
+                <p>Hi, I'm Sosaiah Hillier-Barnes. I am a recent Computer Science graduate from QUT with a deep interest in modern web development and software engineering. Though I have a lot of experience in building responsive, scalable applications using the React.js ecosystem and implementing reliable backend services with Node.js, I believe my true strength lies in my ability to learn and acquire new skills. I am actively seeking an entry-level Software Engineer role where I can bring my technical foundation, problem-solving skills, and enthusiasm for learning to a forward-thinking team. Outside of coding, I am committed to continuous improvement, I am disciplined, and I believe that any problem between two people can be solved with kindness and understanding.</p>
               </div>
             </div>
           </div>
@@ -150,6 +179,14 @@ export default function App() {
               </div>
             </article>
           </div>
+        </section>
+
+        <section id="experience" ref={setSectionRef('experience')} className="content-section">
+          <h2>Experience</h2>
+        </section>
+
+        <section id="personal" ref={setSectionRef('personal')} className="content-section">
+          <h2>Personal</h2>
         </section>
 
         <section id="clips" ref={setSectionRef('clips')} className="content-section projects-section">
@@ -197,6 +234,15 @@ export default function App() {
                 <p>Fortnite monster</p>
               </div>
             </article>
+          </div>
+        </section>
+
+        <section id="contact" ref={setSectionRef('contact')} className="content-section">
+          <h2>Contact</h2>
+          <div className="contact-container">
+            <p>Email: sosaiah.dev@outlook.com</p>
+            <p>Phone: +61 421 323 311</p>
+            <p>Location: Logan, Australia</p>
           </div>
         </section>
 
