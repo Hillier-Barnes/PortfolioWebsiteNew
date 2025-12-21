@@ -29,6 +29,22 @@ export default function ShaderBackground() {
       precision highp float;
       uniform vec2 iResolution;
       uniform float iTime;
+      uniform float iHueShift;
+
+      vec3 rgb2hsv(vec3 c) {
+        vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+        vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+        vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+        float d = q.x - min(q.w, q.y);
+        float e = 1.0e-10;
+        return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+      }
+
+      vec3 hsv2rgb(vec3 c) {
+        vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+        vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+        return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+      }
 
       void mainImage(out vec4 fragColor, vec2 fragCoord) {
         float mr = min(iResolution.x, iResolution.y);
@@ -44,6 +60,11 @@ export default function ShaderBackground() {
 
         vec3 col = vec3(cos(uv * vec2(d, a)) * 0.6 + 0.4, cos(a + d) * 0.5 + 0.5);
         col = cos(col * cos(vec3(d, a, 2.5)) * 0.5 + 0.5);
+
+        // Apply hue shift
+        vec3 hsv = rgb2hsv(col);
+        hsv.x = fract(hsv.x + iHueShift);
+        col = hsv2rgb(hsv);
 
         fragColor = vec4(col, 1.0);
       }
@@ -103,6 +124,7 @@ export default function ShaderBackground() {
     const positionLocation = gl.getAttribLocation(program, 'a_position');
     const resolutionLocation = gl.getUniformLocation(program, 'iResolution');
     const timeLocation = gl.getUniformLocation(program, 'iTime');
+    const hueShiftLocation = gl.getUniformLocation(program, 'iHueShift');
 
     function resize() {
       const rect = canvas.getBoundingClientRect();
@@ -119,6 +141,7 @@ export default function ShaderBackground() {
 
     function render() {
       const currentTime = (Date.now() - startTime) / 1000.0;
+      const hueShift = 0.15; // Hue shift value (0.0 to 1.0, where 1.0 = full rotation)
 
       gl.useProgram(program);
 
@@ -128,6 +151,7 @@ export default function ShaderBackground() {
 
       gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
       gl.uniform1f(timeLocation, currentTime);
+      gl.uniform1f(hueShiftLocation, hueShift);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 

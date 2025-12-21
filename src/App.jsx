@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './index.css';
 import ShaderBackground from './ShaderBackground';
+import VideoPlayer from './VideoPlayer';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -174,7 +175,7 @@ export default function App() {
           <h2>Projects</h2>
           <div className="projects-scroller">
             <article className="project-card">
-              <img src="/images/cloud-credentials.png" alt="Cloud Credentials project" />
+              <VideoPlayer src="/videos/cc-demo.mp4" />
               <div className="project-info">
                 <h3>Cloud Credentials</h3>
                 <p>Blah blah blah</p>
@@ -212,7 +213,40 @@ export default function App() {
         </section>
 
         <section id="personal" ref={setSectionRef('personal')} className="content-section">
-          <h2>Personal</h2>
+          <div className="personal-container">
+            <div className="grid">
+              <div className="grid-item grid-img-item" style={{ gridColumn: '3 / span 1', gridRow: '1 / span 1' }}>
+              <img src="/images/pc.JPG" alt="PC" />
+              </div>
+              <div className="grid-item" style={{ gridColumn: '1 / span 2', gridRow: '1 / span 2' }}>
+                <h3>Hobbies &amp; Interests</h3>
+                <p>Outside of coding, I enjoy a lot of different hobbies and interests such as:</p>
+                <p>Video Games</p>
+                <p>Music</p>
+                <p>Gym &amp; Sports</p>
+                <p>Reading</p>
+                <p>Philosophy</p>
+                <p>Film and TV</p>
+                <p>PC Hardware &amp; Peripherals</p>
+              </div>
+              <div className="grid-item grid-img-item" style={{ gridColumn: '3 / span 1', gridRow: '2 / span 2' }}>
+                <img src="/images/img.jpg" alt="img" />
+              </div>
+              <div className="grid-item grid-img-item" style={{ gridColumn: '2 / span 1', gridRow: '3 / span 1' }}>
+                <img src="/images/cohle.JPG" alt="cohle" />
+              </div>
+              <div className="grid-item grid-img-item" style={{ gridColumn: '1 / span 1', gridRow: '3 / span 1' }}>
+                <img src="/images/water.JPG" alt="water" />
+              </div>
+              <div className="grid-item" style={{ gridColumn: '4 / span 1', gridRow: '2 / span 2' }}>
+                <h2>"You have what you deserve. You could be good today, but instead you choose tomorrow"</h2>
+                <p>- Marcus Aurelius</p>
+              </div>
+              <div className="grid-item grid-img-item" style={{ gridColumn: '4 / span 1', gridRow: '1 / span 1' }}>
+                <img src="/images/boogie.jpg" alt="boogie" />
+              </div>
+            </div>
+          </div>
         </section>
 
         <section id="clips" ref={setSectionRef('clips')} className="content-section projects-section">
@@ -268,7 +302,7 @@ export default function App() {
           <div className="contact-container">
             <p>Email: sosaiah.dev@outlook.com</p>
             <p>Phone: +61 421 323 311</p>
-            <p>Location: Logan, Australia</p>
+            <p>Location: Brisbane, Australia</p>
           </div>
         </section>
 
