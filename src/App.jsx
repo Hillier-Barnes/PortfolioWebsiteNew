@@ -86,12 +86,12 @@ export default function App() {
           >Projects</button>
 
           <button onClick={() => {
-            sectionsRef.current?.skills?.scrollIntoView({ behavior: 'smooth' });
+            sectionsRef.current?.experience?.scrollIntoView({ behavior: 'smooth' });
           }} className={activeSection === 'experience' ? 'active' : ''}
           >Experience</button>
 
           <button onClick={() => {
-            sectionsRef.current?.skills?.scrollIntoView({ behavior: 'smooth' });
+            sectionsRef.current?.personal?.scrollIntoView({ behavior: 'smooth' });
           }} className={activeSection === 'personal' ? 'active' : ''}
           >Personal</button>
           
@@ -107,16 +107,14 @@ export default function App() {
           
         </div>
         <div className="navbar-footer">
-          <button onClick={() => {
-            sectionsRef.current?.home?.scrollIntoView({ behavior: 'smooth' });
-          }}>
-            <img src="/images/img.jpg" alt="Profile" className="profile-image-navbar" />
-          </button>
           <a href="https://github.com/hillier-barnes" target="_blank" rel="noopener noreferrer">
             <img src="/images/github.png" alt="GitHub" />
           </a>
           <a href="https://www.linkedin.com/in/sosaiah-hillier-barnes-051041211/" target="_blank" rel="noopener noreferrer">
             <img src="/images/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="mailto:sosaiah.dev@outlook.com" target="_blank" rel="noopener noreferrer">
+            <img src="/images/email.png" alt="Email" />
           </a>
         </div>
       </section>

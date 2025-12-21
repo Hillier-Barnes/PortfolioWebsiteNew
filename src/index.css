@@ -32,9 +32,9 @@
   --navbar-width: 20%;
   --navbar-min-width: 260px;
   --navbar-width-tablet: 30%;
+  --navbar-image-size: 2.2rem;
   --scrollbar-width: 8px;
   --profile-image-size: 250px;
-  --profile-image-navbar-size: 2.5rem;
   --project-card-width: 80%;
   --project-card-width-mobile: 90%;
   --project-media-height: 420px;
@@ -182,8 +182,8 @@ body {
 }
 
 .navbar-footer img {
-  width: var(--profile-image-navbar-size);
-  height: var(--profile-image-navbar-size);
+  width: var(--navbar-image-size);
+  height: var(--navbar-image-size);
   margin: 0 var(--spacing-xs);
   object-fit: contain;
   filter: grayscale(var(--filter-grayscale));
@@ -192,15 +192,13 @@ body {
   will-change: transform, filter;
 }
 
-.navbar-footer img.profile-image-navbar {
-  object-fit: cover;
-}
 
 .navbar-footer a:hover img,
 .navbar-footer button:hover img {
   transform: scale(var(--transform-scale-icon)) translateY(var(--transform-translate-y));
-  filter: grayscale(0%) drop-shadow(var(--shadow-md)) brightness(var(--filter-brightness));
+  filter: grayscale(0%) drop-shadow(var(--shadow-lg)) brightness(var(--filter-brightness));
   cursor: pointer;
+  opacity: var(--opacity-subtle);
 }
 
 .profile-image-navbar {
