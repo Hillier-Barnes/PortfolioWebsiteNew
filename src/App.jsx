@@ -3,6 +3,22 @@ import './index.css';
 import ShaderBackground from './ShaderBackground';
 import VideoPlayer from './VideoPlayer';
 
+// MAKE DARK MODE AND MORE/BETTER FONT TO LOOK LESS VIBE CODED 
+
+// OPENING ANIMATION
+// ADD FADE TO PROJECTS SCROLLER
+// CONTRAST HARSH W DARK IMAGES
+// IMPROVE VIDEO PLAYER
+// HEADER FOR PERSONAL
+// SHIFT BACKGROUND FOR SECTIONS - gradual hue shift
+// DARK MODE
+// NAVBAR HYPERLINKS DONT CATCH EYE 
+// SOMETHING INTERACTABLE - maybe webgl lil game or something
+// MOUSE INTERACTION FOR BACKGROUND
+// FONTS W MORE CHARACTER
+
+
+
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -203,6 +219,12 @@ export default function App() {
           <div className="experience-container">
             <div className="grid">
               <div className="grid-item" style={{ gridColumn: '1 / span 2', gridRow: '1 / span 3' }}>
+                <h3>Website Development, Work Integrated Learning Project</h3>
+                <p>Worked with Dr. Peter Beven of IEC Professional to create a web application that would allow users to upload course content and have it mapped against the international SFIA (Skills Framework for the Information Age) standards.</p>
+                <p><strong>Project Leadership &amp; Liaison:</strong> Directed team as need and served as the primary liaison for the team, communicating with our partner and translating high-level client feedback into actionable development tasks for the team.</p>
+                <p><strong>Development:</strong> Led the initial implementation of the application's user interface (UI), as well as the integration of the OpenAI API (GPT-5-nano). Worked with team to constantly improve the application and resolve issues as they arose,</p>
+                <p><strong>Credentials Cloud (Project):</strong> Co-developed an AI-powered web application designed to automate the process of mapping textual data (like course content) against the international SFIA (Skills Framework for the Information Age) standards.</p>
+                <p><strong>Stack:</strong> React (Vite), JavaScript, HTML5, CSS3 (Tailwind), OpenAI API (GPT-5-nano), and Vercel Deployment.</p>
               </div>
               <div className="grid-item" style={{ gridColumn: '3 / span 1', gridRow: '1 / span 3' }}>
               </div>

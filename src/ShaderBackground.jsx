@@ -141,7 +141,7 @@ export default function ShaderBackground() {
 
     function render() {
       const currentTime = (Date.now() - startTime) / 1000.0;
-      const hueShift = 0.15; // Hue shift value (0.0 to 1.0, where 1.0 = full rotation)
+      const hueShift = 0.25; // Hue shift value (0.0 to 1.0, where 1.0 = full rotation)
 
       gl.useProgram(program);
 
