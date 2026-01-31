@@ -17,22 +17,29 @@ import VideoPlayer from './VideoPlayer';
 // MOUSE INTERACTION FOR BACKGROUND
 // FONTS W MORE CHARACTER
 
-
-
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const sectionsRef = useRef({});
+  const navbarRef = useRef(null);
 
   useEffect(() => {
-    // Observer options to detect when a section is in view
+    const timer = setTimeout(() => {
+      if (navbarRef.current) {
+        navbarRef.current.classList.add('visible');
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const observerOptions = {
       root: document.querySelector('.scroll-section'),
       rootMargin: '-50% 0px -50% 0px',
       threshold: 0,
     };
 
-    // Observer callback function to set the active section
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -103,7 +110,7 @@ export default function App() {
         className={`mobile-menu-overlay ${isMobileMenuOpen ? 'show' : ''}`}
         onClick={() => setIsMobileMenuOpen(false)}
       ></div>
-      <section className={`navbar-section ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+      <section ref={navbarRef} className={`navbar-section ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
         <div className="navbar">
 
           <button onClick={() => handleNavClick('home')} className={activeSection === 'home' ? 'active' : ''}>
