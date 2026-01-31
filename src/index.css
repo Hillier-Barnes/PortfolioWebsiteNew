@@ -433,7 +433,6 @@ body {
   opacity: var(--opacity-soft);
   transform: translateY(0);
   font-size: var(--font-size-subheading);
-  font-style: italic;
   font-weight: 500;
 }
 
