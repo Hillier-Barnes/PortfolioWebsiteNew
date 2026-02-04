@@ -50,7 +50,7 @@ export default function ShaderBackground() {
         float mr = min(iResolution.x, iResolution.y);
         vec2 uv = (fragCoord * 2.0 - iResolution.xy) / mr;
 
-        float d = -iTime * 0.5; // Time value (0.0 to 1.0)
+        float d = -iTime * 0.5;
         float a = 0.0;
         for (float i = 0.0; i < 8.0; ++i) {
           a += cos(i - d - a * uv.x);
@@ -59,7 +59,7 @@ export default function ShaderBackground() {
         d += iTime * 0.5;
 
         vec3 col = vec3(cos(uv * vec2(d, a)) * 0.6 + 0.4, cos(a + d) * 0.5 + 0.5);
-        col = cos(col * cos(vec3(d, a, 2.5)) * 0.6 + 0.5); 
+        col = cos(col * cos(vec3(d, a, 2.5)) * 0.5 + 0.5);
 
         // Apply hue shift
         vec3 hsv = rgb2hsv(col);
@@ -141,7 +141,7 @@ export default function ShaderBackground() {
 
     function render() {
       const currentTime = (Date.now() - startTime) / 1000.0;
-      const hueShift = 0.25; // Hue shift value (0.0 to 1.0)
+      const hueShift = 0.25;
 
       gl.useProgram(program);
 
