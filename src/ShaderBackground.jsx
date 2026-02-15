@@ -141,7 +141,7 @@ export default function ShaderBackground() {
 
     function render() {
       const currentTime = (Date.now() - startTime) / 1000.0;
-      const hueShift = 0.25;
+      const hueShift = 0.21;
 
       gl.useProgram(program);
 

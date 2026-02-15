@@ -5,7 +5,7 @@ import React, { useState, useRef, useEffect } from 'react';
 export default function VideoPlayer({ src, className = '' }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(false);
